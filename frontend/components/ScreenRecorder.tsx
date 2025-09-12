@@ -19,7 +19,7 @@ export default function ScreenRecorder({ onRecordingComplete, onScreenshotComple
     try {
       // Request screen capture
       const stream = await navigator.mediaDevices.getDisplayMedia({
-        video: { mediaSource: 'screen' },
+        video: true,
         audio: true
       })
 
