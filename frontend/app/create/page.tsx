@@ -834,7 +834,7 @@ export default function CreateTourPage() {
                             videoInput.type = 'file'
                             videoInput.accept = 'video/*'
                             videoInput.onchange = (e) => {
-                              const event = e as React.ChangeEvent<HTMLInputElement>
+                              const event = e as unknown as React.ChangeEvent<HTMLInputElement>
                               handleVideoUpload(event)
                             }
                             videoInput.click()
