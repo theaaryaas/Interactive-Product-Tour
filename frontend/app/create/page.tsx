@@ -833,7 +833,10 @@ export default function CreateTourPage() {
                             const videoInput = document.createElement('input')
                             videoInput.type = 'file'
                             videoInput.accept = 'video/*'
-                            videoInput.onchange = handleVideoUpload
+                            videoInput.onchange = (e) => {
+                              const event = e as React.ChangeEvent<HTMLInputElement>
+                              handleVideoUpload(event)
+                            }
                             videoInput.click()
                           }}
                           className="btn-secondary flex-1 flex items-center justify-center"
