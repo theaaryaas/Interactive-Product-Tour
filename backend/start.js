@@ -9,7 +9,7 @@ process.env.JWT_SECRET = 'your-super-secret-jwt-key-change-this-in-production'
 // For MongoDB Atlas (cloud) - replace with your actual connection string:
 // Get this from: https://www.mongodb.com/atlas
 // Format: mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/product-tour?retryWrites=true&w=majority
-process.env.MONGODB_URI = 'mongodb+srv://producttour-user:07SEP2001aa@@cluster0.5jodo8k.mongodb.net/product-tour?retryWrites=true&w=majority&appName=Cluster0'
+process.env.MONGODB_URI = 'mongodb+srv://producttour-user:07SEP2001aa@cluster0.5jodo8k.mongodb.net/product-tour?retryWrites=true&w=majority&appName=Cluster0'
 process.env.UPLOAD_DIR = 'uploads'
 
 // Start the server
