@@ -17,7 +17,7 @@ export default function ScreenRecorder({ onRecordingComplete, onScreenshotComple
 
   const startRecording = async () => {
     try {
-      // Request screen capture
+      // Request screen capture (fixed for TypeScript)
       const stream = await navigator.mediaDevices.getDisplayMedia({
         video: true,
         audio: true
