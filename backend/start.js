@@ -1,8 +1,8 @@
 // Simple environment setup for development
-process.env.NODE_ENV = 'development'
-process.env.PORT = '5000'
-process.env.FRONTEND_URL = 'http://localhost:3000'
-process.env.JWT_SECRET = 'your-super-secret-jwt-key-change-this-in-production'
+process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+process.env.PORT = process.env.PORT || '5000'
+process.env.FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000'
+process.env.JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-this-in-production'
 // For local MongoDB (comment out when using Atlas):
 // process.env.MONGODB_URI = 'mongodb://localhost:27017/product-tour'
 
