@@ -29,32 +29,15 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// CORS configuration
-const allowedOrigins = [
-  'http://localhost:3000',
-  'https://interactive-product-tour.vercel.app',
-  'https://interactive-product-tour-ifls3dhwb.vercel.app',
-  process.env.FRONTEND_URL
-].filter(Boolean);
-
-console.log('Allowed CORS origins:', allowedOrigins);
-
+// CORS configuration - Temporary wildcard for testing
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      console.log('CORS blocked origin:', origin);
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: true, // Allow all origins temporarily
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+console.log('CORS configured to allow all origins temporarily');
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
