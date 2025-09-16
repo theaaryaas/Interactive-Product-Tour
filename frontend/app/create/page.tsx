@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 import ScreenRecorder from '../../components/ScreenRecorder'
+import api from '@/lib/api'
 
 interface Annotation {
   id: string
@@ -245,7 +246,7 @@ export default function CreateTourPage() {
     setIsSaving(true)
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch('http://localhost:5000/api/tours', {
+      const response = await fetch(api.tours, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

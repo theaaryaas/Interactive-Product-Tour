@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, Play, Pause, Eye, Heart, Share2, Edit } from 'lu
 import Link from 'next/link'
 import { useRouter, useParams } from 'next/navigation'
 import toast from 'react-hot-toast'
+import api from '@/lib/api'
 
 interface Annotation {
   id: string
@@ -62,7 +63,7 @@ export default function TourPreviewPage() {
   const fetchTour = async (tourId: string) => {
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch(`http://localhost:5000/api/tours/${tourId}`, {
+      const response = await fetch(api.tourById(tourId), {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -104,7 +105,7 @@ export default function TourPreviewPage() {
     
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch(`http://localhost:5000/api/tours/${tour._id}`, {
+      const response = await fetch(api.tourById(tour._id), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

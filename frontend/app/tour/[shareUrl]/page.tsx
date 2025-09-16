@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, Play, Pause, Eye, Heart, Share2 } from 'lucide-r
 import Link from 'next/link'
 import { useRouter, useParams } from 'next/navigation'
 import toast from 'react-hot-toast'
+import api from '@/lib/api'
 
 interface Annotation {
   id: string
@@ -59,7 +60,7 @@ export default function PublicTourPage() {
 
   const fetchTour = async (shareUrl: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/tours/public/${shareUrl}`)
+      const response = await fetch(api.tourByShareUrl(shareUrl))
 
       if (response.ok) {
         const tourData = await response.json()

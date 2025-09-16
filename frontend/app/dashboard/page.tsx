@@ -6,6 +6,7 @@ import { Plus, Eye, Edit, Trash2, Share2, BarChart3, Users, Zap } from 'lucide-r
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import api from '@/lib/api'
 
 interface Tour {
   _id: string
@@ -46,7 +47,7 @@ export default function DashboardPage() {
   const fetchDashboardData = async () => {
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch('http://localhost:5000/api/users/dashboard', {
+      const response = await fetch(api.dashboard, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -70,7 +71,7 @@ export default function DashboardPage() {
 
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch(`http://localhost:5000/api/tours/${tourId}`, {
+      const response = await fetch(api.tourById(tourId), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

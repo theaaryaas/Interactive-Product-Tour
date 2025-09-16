@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useRouter, useParams } from 'next/navigation'
 import toast from 'react-hot-toast'
 import ScreenRecorder from '../../../../components/ScreenRecorder'
+import api from '@/lib/api'
 
 interface Annotation {
   id: string
@@ -65,7 +66,7 @@ export default function EditTourPage() {
   const fetchTour = async (tourId: string) => {
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch(`http://localhost:5000/api/tours/${tourId}`, {
+      const response = await fetch(api.tourById(tourId), {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -173,7 +174,7 @@ export default function EditTourPage() {
     setIsSaving(true)
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch(`http://localhost:5000/api/tours/${tour._id}`, {
+      const response = await fetch(api.tourById(tour._id), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

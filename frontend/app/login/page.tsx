@@ -7,6 +7,7 @@ import { Eye, EyeOff, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import api from '@/lib/api'
 
 interface LoginForm {
   email: string
@@ -23,7 +24,7 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginForm) => {
     setIsLoading(true)
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(api.login, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

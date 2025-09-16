@@ -7,6 +7,7 @@ import { Eye, EyeOff, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import api from '@/lib/api'
 
 interface SignupForm {
   name: string
@@ -27,7 +28,7 @@ export default function SignupPage() {
   const onSubmit = async (data: SignupForm) => {
     setIsLoading(true)
     try {
-      const response = await fetch('http://localhost:5000/api/auth/signup', {
+      const response = await fetch(api.signup, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
